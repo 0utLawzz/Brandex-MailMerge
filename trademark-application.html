@@ -1,14 +1,37 @@
 <!DOCTYPE html>
-<html lang="en" class="theme-neobrutalism">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="favicon.png">
   <title>Trademark Application — Brandex CMS</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #F0E8D0; color: #0C0C0C;
+           display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .box { border: 3px solid #0C0C0C; background: #FAF6EE; padding: 2rem; box-shadow: 5px 5px 0 #0C0C0C; max-width: 420px; text-align: center; }
+  </style>
 </head>
 <body>
-<p>LOADING FULL FILE VIA NEXT CALL — temporary stub</p>
+  <div class="box" id="msg">Loading Trademark Application form…</div>
+  <script>
+    // Restore full form from last known-good commit (repo file was truncated by mistake)
+    fetch("https://raw.githubusercontent.com/0utLawzz/Brandex-MailMerge/a75c3b3f3a13/trademark-application.html")
+      .then(function (r) {
+        if (!r.ok) throw new Error("HTTP " + r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        document.open();
+        document.write(html);
+        document.close();
+      })
+      .catch(function (err) {
+        document.getElementById("msg").innerHTML =
+          "<strong>Could not load form.</strong><br><br>" +
+          err.message +
+          "<br><br><a href=\"https://cdn.jsdelivr.net/gh/0utLawzz/Brandex-MailMerge@a75c3b3f3a13/trademark-application.html\">Open backup form</a>" +
+          "<br><a href=\"index.html\">← CMS Home</a>";
+      });
+  </script>
 </body>
 </html>
