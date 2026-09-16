@@ -95,7 +95,6 @@
     .btn-refresh {
       background: var(--accent2);
       color: #fff;
-      border: none;
       font-family: 'DM Mono', monospace;
       font-size: 0.72rem;
       letter-spacing: 1px;
@@ -277,7 +276,7 @@
       badge.textContent = records.length;
 
       if (records.length === 0) {
-        container.innerHTML = '<div class="empty">No matching records</div>';
+        container.innerHTML = '<div class="empty">No matching records in Sheet1</div>';
         return;
       }
 
@@ -330,19 +329,20 @@
       document.getElementById('countBadge').textContent = '...';
 
       try {
-        // Live fetch via Apps Script doPost action=getRecords
-        const res = await fetch(APPS_SCRIPT_URL, {
-          method: 'POST',
-          body: JSON.stringify({ action: 'getRecords' }),
-          headers: { 'Content-Type': 'text/plain;charset=utf-8' }
-        });
-
+        // GET is reliable for Apps Script redirects (POST often fails in browser)
+        const url = APPS_SCRIPT_URL + '?action=getRecords&_=' + Date.now();
+        const res = await fetch(url, { method: 'GET', redirect: 'follow' });
         const text = await res.text();
+
         let data;
         try {
           data = JSON.parse(text);
         } catch {
-          throw new Error('Invalid response from server');
+          // If doGet missing, Google returns HTML error page
+          if (text.indexOf('doGet') !== -1) {
+            throw new Error('doGet missing in Apps Script — paste doGet() then New Version deploy');
+          }
+          throw new Error('Invalid response (not JSON). Redeploy Web App as Anyone.');
         }
 
         if (!data.ok) {
@@ -350,7 +350,6 @@
         }
 
         ALL_RECORDS = Array.isArray(data.records) ? data.records : [];
-        // Normalize empty values
         ALL_RECORDS = ALL_RECORDS.map(r => ({
           date: r.date || r.issueDate || '',
           folder: r.folder || '',
@@ -369,9 +368,10 @@
       } catch (err) {
         container.innerHTML = `<div class="error">
           Live fetch failed: ${esc(err.message)}<br><br>
-          Check: (1) Apps Script deployed with New Version<br>
-          (2) doPost handles action "getRecords"<br>
-          (3) Web App access = Anyone
+          1) Apps Script mein doGet() add karo<br>
+          2) Deploy → New version → Deploy<br>
+          3) Who has access = Anyone<br>
+          4) Sheet tab name must be Sheet1
         </div>`;
         document.getElementById('countBadge').textContent = 'ERR';
       }
