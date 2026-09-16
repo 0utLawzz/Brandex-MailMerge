@@ -59,21 +59,21 @@
       letter-spacing: 1px;
     }
     .page {
-      max-width: 1500px;
+      max-width: 100%;
       margin: 0 auto;
-      padding: 28px 14px 50px;
+      padding: 20px 12px 40px;
     }
     .page-header {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 22px;
+      margin-bottom: 18px;
       flex-wrap: wrap;
       gap: 12px;
     }
     .page-header h1 {
       font-family: 'Bebas Neue', sans-serif;
-      font-size: 1.9rem;
+      font-size: 1.7rem;
       letter-spacing: 1px;
     }
     .back-btn {
@@ -97,76 +97,91 @@
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      gap: 10px;
       align-items: center;
-      margin-bottom: 16px;
+      margin-bottom: 14px;
     }
     .search-wrap {
       flex: 1;
-      min-width: 200px;
+      min-width: 180px;
     }
     .search-wrap input {
       width: 100%;
-      padding: 10px 12px;
+      padding: 9px 12px;
       border: 2.5px solid var(--black);
       background: var(--panel);
       font-family: 'Space Grotesk', sans-serif;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       text-transform: uppercase;
+    }
+    .filter-select {
+      padding: 9px 10px;
+      border: 2.5px solid var(--black);
+      background: var(--panel);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      min-width: 120px;
     }
     .count-badge {
       font-family: 'DM Mono', monospace;
-      font-size: 0.75rem;
+      font-size: 0.72rem;
       letter-spacing: 1px;
       background: var(--accent2);
       color: #fff;
       border: 2px solid var(--black);
       padding: 8px 12px;
       box-shadow: var(--shadow-sm);
+      white-space: nowrap;
     }
     .table-container {
-      overflow-x: auto;
+      overflow-x: hidden;
       border: 3px solid var(--black);
       box-shadow: var(--shadow);
       background: var(--panel);
+      width: 100%;
     }
     table {
       width: 100%;
       border-collapse: collapse;
-      font-size: 0.78rem;
+      font-size: 0.7rem;
+      table-layout: fixed;
     }
     th {
       font-family: 'DM Mono', monospace;
-      font-size: 0.65rem;
-      letter-spacing: 0.8px;
+      font-size: 0.58rem;
+      letter-spacing: 0.5px;
       background: var(--bg2);
       color: #FAF6EE;
-      padding: 10px 8px;
+      padding: 8px 4px;
       text-align: left;
       border-bottom: 2px solid var(--black);
       white-space: nowrap;
       position: sticky;
       top: 0;
       z-index: 2;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
     td {
-      padding: 8px;
+      padding: 6px 4px;
       border-bottom: 1px solid #ddd;
       vertical-align: middle;
-      max-width: 180px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
     }
     tr:hover td { background: var(--bg-alt); }
     .thumb-cell {
-      width: 52px;
+      width: 44px;
       text-align: center;
-      padding: 4px;
+      padding: 3px;
     }
     .thumb {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
       border: 2px solid var(--black);
       background: #fff;
@@ -174,25 +189,25 @@
       margin: 0 auto;
     }
     .thumb-placeholder {
-      width: 40px;
-      height: 40px;
+      width: 34px;
+      height: 34px;
       border: 2px dashed #999;
       background: #f0f0f0;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.55rem;
+      font-size: 0.5rem;
       color: #666;
       margin: 0 auto;
       font-family: 'DM Mono', monospace;
     }
     .filing-badge {
       display: inline-block;
-      padding: 3px 8px;
+      padding: 2px 6px;
       border: 2px solid var(--black);
       font-family: 'DM Mono', monospace;
-      font-size: 0.62rem;
-      letter-spacing: 0.5px;
+      font-size: 0.55rem;
+      letter-spacing: 0.4px;
       white-space: nowrap;
     }
     .filing-pending {
@@ -227,6 +242,59 @@
       box-shadow: var(--shadow);
     }
     .error { color: #c0392b; background: #fde2e2; }
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .page-btn {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 1px;
+      padding: 9px 16px;
+      background: var(--panel);
+      border: 2.5px solid var(--black);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      color: var(--black);
+      text-transform: uppercase;
+      transition: transform 0.12s, box-shadow 0.12s;
+    }
+    .page-btn:hover:not(:disabled) {
+      transform: translate(-2px, -2px);
+      box-shadow: 5px 5px 0 #0C0C0C;
+    }
+    .page-btn:disabled {
+      opacity: 0.45;
+      cursor: not-allowed;
+      box-shadow: none;
+    }
+    .page-info {
+      font-family: 'DM Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      padding: 8px 14px;
+      background: var(--bg2);
+      color: #FAF6EE;
+      border: 2px solid var(--black);
+    }
+    /* Column widths tuned to fit typical viewport without horizontal scroll */
+    th:nth-child(1), td:nth-child(1) { width: 44px; }
+    th:nth-child(2), td:nth-child(2) { width: 9%; }
+    th:nth-child(3), td:nth-child(3) { width: 9%; }
+    th:nth-child(4), td:nth-child(4) { width: 7%; }
+    th:nth-child(5), td:nth-child(5) { width: 12%; }
+    th:nth-child(6), td:nth-child(6) { width: 7%; }
+    th:nth-child(7), td:nth-child(7) { width: 5%; }
+    th:nth-child(8), td:nth-child(8) { width: 12%; }
+    th:nth-child(9), td:nth-child(9) { width: 12%; }
+    th:nth-child(10), td:nth-child(10) { width: 5%; }
+    th:nth-child(11), td:nth-child(11) { width: 12%; }
+    th:nth-child(12), td:nth-child(12) { width: 6%; }
   </style>
 </head>
 <body>
@@ -243,20 +311,39 @@
 
     <div class="toolbar">
       <div class="search-wrap">
-        <input type="text" id="searchInput" placeholder="Search mark, applicant, consultant, class, filing…" oninput="filterTable()" />
+        <input type="text" id="searchInput" placeholder="Search mark, applicant, consultant, class, filing…" oninput="applyFilters()" />
       </div>
+      <select id="filterFiling" class="filter-select" onchange="applyFilters()">
+        <option value="">All Filing</option>
+        <option value="PENDING">Pending</option>
+        <option value="DISPATCHED">Dispatched</option>
+        <option value="HOLD">Hold</option>
+        <option value="REJECTED">Rejected</option>
+      </select>
+      <select id="filterYear" class="filter-select" onchange="applyFilters()">
+        <option value="">All Years</option>
+      </select>
       <div class="count-badge" id="countBadge">…</div>
     </div>
 
     <div id="recordsContainer">
       <div class="loading">Loading live records from Google Sheet…</div>
     </div>
+
+    <div class="pagination" id="pagination" style="display:none;">
+      <button class="page-btn" id="prevBtn" onclick="changePage(-1)">← Back</button>
+      <span class="page-info" id="pageInfo">Page 1 of 1</span>
+      <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
+    </div>
   </div>
 
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUMRVcdasDxGIaaPKbSzhEVbkKyMyYLNv4-NQ8pyGJEjWOukRPzS3Pt5Da6_CdNmP33Q/exec";
+    const PAGE_SIZE = 50;
 
     let ALL_RECORDS = [];
+    let FILTERED_RECORDS = [];
+    let currentPage = 1;
 
     function getStatusClass(status) {
       if (!status) return '';
@@ -297,15 +384,86 @@
       return '<img class="thumb" src="' + src + '" alt="" loading="lazy" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'" /><div class="thumb-placeholder" style="display:none">N/A</div>';
     }
 
-    function renderTable(records) {
+    // Parse dates like 16-SEP-26 or 06-SEP-25 → timestamp (most recent first)
+    function parseDate(d) {
+      if (!d) return 0;
+      const months = { JAN:0, FEB:1, MAR:2, APR:3, MAY:4, JUN:5, JUL:6, AUG:7, SEP:8, OCT:9, NOV:10, DEC:11 };
+      const parts = String(d).toUpperCase().trim().split(/[-\/\s]+/);
+      if (parts.length < 3) return 0;
+      const day = parseInt(parts[0], 10) || 1;
+      const mon = months[parts[1].substring(0, 3)] ?? 0;
+      let year = parseInt(parts[2], 10) || 0;
+      if (year < 100) year += 2000;
+      return new Date(year, mon, day).getTime();
+    }
+
+    function sortByDateDesc(records) {
+      return records.slice().sort((a, b) => parseDate(b.date) - parseDate(a.date));
+    }
+
+    function populateYearFilter() {
+      const years = [...new Set(ALL_RECORDS.map(r => String(r.year || '').trim()).filter(Boolean))].sort((a, b) => b - a);
+      const sel = document.getElementById('filterYear');
+      // keep first option
+      while (sel.options.length > 1) sel.remove(1);
+      years.forEach(y => {
+        const opt = document.createElement('option');
+        opt.value = y;
+        opt.textContent = y;
+        sel.appendChild(opt);
+      });
+    }
+
+    function applyFilters() {
+      const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+      const filing = (document.getElementById('filterFiling').value || '').toUpperCase();
+      const year = (document.getElementById('filterYear').value || '').trim();
+
+      FILTERED_RECORDS = ALL_RECORDS.filter(r => {
+        if (filing && !String(r.filingProcess || '').toUpperCase().includes(filing)) return false;
+        if (year && String(r.year || '').trim() !== year) return false;
+        if (!q) return true;
+        return (
+          String(r.folder || '').toLowerCase().includes(q) ||
+          String(r.tm || '').toLowerCase().includes(q) ||
+          String(r.appName || '').toLowerCase().includes(q) ||
+          String(r.appTrade || '').toLowerCase().includes(q) ||
+          String(r.conName || '').toLowerCase().includes(q) ||
+          String(r.classNo || '').toLowerCase().includes(q) ||
+          String(r.status || '').toLowerCase().includes(q) ||
+          String(r.filingProcess || '').toLowerCase().includes(q) ||
+          String(r.noImg || '').toLowerCase().includes(q) ||
+          String(r.date || '').toLowerCase().includes(q)
+        );
+      });
+
+      currentPage = 1;
+      renderPage();
+    }
+
+    function changePage(delta) {
+      const totalPages = Math.max(1, Math.ceil(FILTERED_RECORDS.length / PAGE_SIZE));
+      currentPage = Math.min(totalPages, Math.max(1, currentPage + delta));
+      renderPage();
+    }
+
+    function renderPage() {
       const container = document.getElementById('recordsContainer');
       const badge = document.getElementById('countBadge');
-      badge.textContent = records.length;
+      const pag = document.getElementById('pagination');
+      const total = FILTERED_RECORDS.length;
+      const totalPages = Math.max(1, Math.ceil(total / PAGE_SIZE));
 
-      if (records.length === 0) {
-        container.innerHTML = '<div class="empty">No matching records in Sheet1</div>';
+      badge.textContent = total + (total === 1 ? ' record' : ' records');
+
+      if (total === 0) {
+        container.innerHTML = '<div class="empty">No matching records</div>';
+        pag.style.display = 'none';
         return;
       }
+
+      const start = (currentPage - 1) * PAGE_SIZE;
+      const pageRecords = FILTERED_RECORDS.slice(start, start + PAGE_SIZE);
 
       let html = `<div class="table-container"><table>
         <thead><tr>
@@ -323,52 +481,39 @@
           <th>Status</th>
         </tr></thead><tbody>`;
 
-      records.forEach(r => {
+      pageRecords.forEach(r => {
         const statusClass = getStatusClass(r.status);
         const fClass = filingClass(r.filingProcess);
         html += `<tr class="${statusClass}">
           <td class="thumb-cell">${thumbHtml(r.img)}</td>
           <td title="${esc(r.noImg)}">${esc(r.noImg)}</td>
           <td><span class="filing-badge ${fClass}">${esc(r.filingProcess || '—')}</span></td>
-          <td>${esc(r.date)}</td>
+          <td title="${esc(r.date)}">${esc(r.date)}</td>
           <td title="${esc(r.folder)}">${esc(r.folder)}</td>
-          <td>${esc(r.tm)}</td>
+          <td title="${esc(r.tm)}">${esc(r.tm)}</td>
           <td>${esc(r.classNo)}</td>
           <td title="${esc(r.appName)}">${esc(r.appName)}</td>
           <td title="${esc(r.appTrade)}">${esc(r.appTrade)}</td>
           <td>${esc(r.year)}</td>
           <td title="${esc(r.conName)}">${esc(r.conName)}</td>
-          <td>${esc(r.status)}</td>
+          <td title="${esc(r.status)}">${esc(r.status)}</td>
         </tr>`;
       });
       html += '</tbody></table></div>';
       container.innerHTML = html;
-    }
 
-    function filterTable() {
-      const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-      if (!q) {
-        renderTable(ALL_RECORDS);
-        return;
-      }
-      const filtered = ALL_RECORDS.filter(r =>
-        String(r.folder || '').toLowerCase().includes(q) ||
-        String(r.tm || '').toLowerCase().includes(q) ||
-        String(r.appName || '').toLowerCase().includes(q) ||
-        String(r.appTrade || '').toLowerCase().includes(q) ||
-        String(r.conName || '').toLowerCase().includes(q) ||
-        String(r.classNo || '').toLowerCase().includes(q) ||
-        String(r.status || '').toLowerCase().includes(q) ||
-        String(r.filingProcess || '').toLowerCase().includes(q) ||
-        String(r.noImg || '').toLowerCase().includes(q)
-      );
-      renderTable(filtered);
+      // Pagination UI
+      pag.style.display = 'flex';
+      document.getElementById('pageInfo').textContent = 'Page ' + currentPage + ' of ' + totalPages + ' · ' + PAGE_SIZE + '/page';
+      document.getElementById('prevBtn').disabled = currentPage <= 1;
+      document.getElementById('nextBtn').disabled = currentPage >= totalPages;
     }
 
     async function loadRecords() {
       const container = document.getElementById('recordsContainer');
       container.innerHTML = '<div class="loading">Loading live records from Google Sheet…</div>';
       document.getElementById('countBadge').textContent = '…';
+      document.getElementById('pagination').style.display = 'none';
 
       try {
         const url = APPS_SCRIPT_URL + '?action=getRecords&_=' + Date.now();
@@ -405,7 +550,11 @@
           filingProcess: r.filingProcess || ''
         }));
 
-        filterTable();
+        // Default: most recent date at top
+        ALL_RECORDS = sortByDateDesc(ALL_RECORDS);
+
+        populateYearFilter();
+        applyFilters();
       } catch (err) {
         container.innerHTML = `<div class="error">
           Live fetch failed: ${esc(err.message)}<br><br>
