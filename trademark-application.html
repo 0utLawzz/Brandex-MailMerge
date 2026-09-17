@@ -12,26 +12,97 @@
   </style>
 </head>
 <body>
-  <div class="box" id="msg">Loading Trademark Application form…</div>
+  <div class="box" id="msg">Loading Trademark Application…</div>
   <script>
-    // Restore full form from last known-good commit (repo file was truncated by mistake)
-    fetch("https://raw.githubusercontent.com/0utLawzz/Brandex-MailMerge/a75c3b3f3a13/trademark-application.html")
+  (function () {
+    var SRC = "https://raw.githubusercontent.com/0utLawzz/Brandex-MailMerge/a75c3b3f3a13/trademark-application.html";
+
+    function patch(html) {
+      // 1) TM Number optional — remove required * and required attr
+      html = html.replace(
+        /<label>Trademark Number <span class="req">\*<\/span><\/label>\s*<input type="text" id="tm" required placeholder="REQUIRED" \/>/,
+        '<label>Trademark Number</label>\n            <input type="text" id="tm" placeholder="OPTIONAL" />'
+      );
+
+      // 2) Year default 2023
+      html = html.replace(
+        /<input type="text" id="year" list="yearList" required placeholder="E\.G\. 2026" \/>/,
+        '<input type="text" id="year" list="yearList" required value="2023" placeholder="E.G. 2023" />'
+      );
+
+      // 3) Remove tm from requiredFields validation
+      html = html.replace(
+        /\{ id: 'tm', name: 'Trademark Number' \},\s*/,
+        ''
+      );
+
+      // 4) Image upload sets noImg to IMAGE UPLOADED
+      html = html.replace(
+        "preview.style.display = 'block';\n      };",
+        "preview.style.display = 'block';\n        document.getElementById('noImg').value = 'IMAGE UPLOADED';\n      };"
+      );
+
+      // 5) Reset noImg text
+      html = html.replace(
+        "document.getElementById('noImg').value = '[NO IMAGE PROVIDED]';",
+        "document.getElementById('noImg').value = '[Text Here]';"
+      );
+
+      // 6) Inject applyFormDefaults
+      if (html.indexOf('function applyFormDefaults') === -1) {
+        var defaultsFn =
+          "function applyFormDefaults(){\n" +
+          "  var classSel=document.getElementById('classNo');\n" +
+          "  if(classSel){ classSel.value='3'; if(typeof onClassChange==='function') onClassChange(); }\n" +
+          "  var yearEl=document.getElementById('year'); if(yearEl) yearEl.value='2023';\n" +
+          "  var conSel=document.getElementById('conSelect');\n" +
+          "  if(conSel && Array.isArray(CONSULTANT_DATA)){\n" +
+          "    var idx=CONSULTANT_DATA.findIndex(function(c){ return String(c.name||'').toUpperCase().indexOf('BRANDEX')!==-1; });\n" +
+          "    if(idx>=0){ conSel.value=String(idx); if(typeof onConsultantChange==='function') onConsultantChange(); }\n" +
+          "  }\n" +
+          "  var noImg=document.getElementById('noImg'); if(noImg && !noImg.value.trim()) noImg.value='[Text Here]';\n" +
+          "}\n";
+        html = html.replace('function populateClassSelect()', defaultsFn + 'function populateClassSelect()');
+        html = html.replace(
+          'populateClassSelect();\n    populateConsultantSelect();',
+          'populateClassSelect();\n    populateConsultantSelect();\n    applyFormDefaults();'
+        );
+        html = html.replace(
+          'initIssueDateDefault();\n    }',
+          'initIssueDateDefault();\n      applyFormDefaults();\n    }'
+        );
+      }
+
+      // 7) Favicon
+      if (html.indexOf('favicon.svg') === -1) {
+        html = html.replace(
+          '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>',
+          '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <link rel="icon" href="favicon.svg" type="image/svg+xml">\n  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">'
+        );
+      }
+
+      // 8) Version badge
+      html = html.replace('TRADEMARK APPLICATION v1.2', 'TRADEMARK APPLICATION v1.3');
+
+      return html;
+    }
+
+    fetch(SRC)
       .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
+        if (!r.ok) throw new Error('HTTP ' + r.status);
         return r.text();
       })
       .then(function (html) {
         document.open();
-        document.write(html);
+        document.write(patch(html));
         document.close();
       })
       .catch(function (err) {
-        document.getElementById("msg").innerHTML =
-          "<strong>Could not load form.</strong><br><br>" +
-          err.message +
-          "<br><br><a href=\"https://cdn.jsdelivr.net/gh/0utLawzz/Brandex-MailMerge@a75c3b3f3a13/trademark-application.html\">Open backup form</a>" +
-          "<br><a href=\"index.html\">← CMS Home</a>";
+        document.getElementById('msg').innerHTML =
+          '<strong>Could not load form.</strong><br><br>' + err.message +
+          '<br><br><a href="index.html">← CMS Home</a>';
       });
+  })();
   </script>
 </body>
 </html>
