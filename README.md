@@ -4,6 +4,8 @@
 ![License](https://img.shields.io/badge/license-MIT-blue)
 ![Status](https://img.shields.io/badge/status-production-C94A00)
 ![Theme](https://img.shields.io/badge/theme-Neo--Brutalism-C94A00)
+[![Pages](https://github.com/0utLawzz/Brandex-MailMerge/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/0utLawzz/Brandex-MailMerge/actions/workflows/pages/pages-build-deployment)
+[![CI](https://github.com/0utLawzz/Brandex-MailMerge/actions/workflows/ci.yml/badge.svg)](https://github.com/0utLawzz/Brandex-MailMerge/actions/workflows/ci.yml)
 
 Neo-Brutalism CMS for **Brandex Law Associates** — trademark application generator (TM-1 / TM-48), live record view with stats, and a links hub to the firm’s other tools.
 
@@ -64,6 +66,9 @@ Brandex-MailMerge/
 ├── trademark-application.html    # TM form (GitHub Pages)
 ├── records.html                  # Record table + stats
 ├── Brandex-MailMerge-Full.gs     # Source of truth → paste into Apps Script Code.gs
+├── .github/workflows/
+│   ├── ci.yml                    # Lint docs + HTML chrome checks
+│   └── release.yml               # Auto release on tag v*
 ├── THEME.md                      # Neo-Brutalism design system
 ├── DEPLOY-GUIDE.md               # Deploy & troubleshooting
 ├── RELEASE_NOTES.md              # v1.3.0 release write-up
@@ -83,6 +88,18 @@ Editing status, filing process, names, or any cell in Sheet1 is **live immediate
 You do **not** redeploy Apps Script for data changes.
 
 Redeploy only when **script code** changes — and always **Edit existing deployment → New version**, never a brand-new deployment (that changes the URL and breaks the form).
+
+---
+
+## GitHub Actions
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| **pages-build-deployment** | push to `main` | Publish static site to GitHub Pages |
+| **CI** | push / PR to `main` | Markdown + HTML structure checks (header/footer/brand) |
+| **Release** | tag `v*` | Create GitHub Release from `RELEASE_NOTES.md` / CHANGELOG |
+
+Tag example: `git tag v1.3.0 && git push origin v1.3.0` → auto release.
 
 ---
 

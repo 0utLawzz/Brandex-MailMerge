@@ -1,0 +1,83 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    name: Lint docs & HTML
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Markdown lint
+        run: |
+          npx --yes markdownlint-cli2 \
+            "README.md" \
+            "CHANGELOG.md" \
+            "DEPLOY-GUIDE.md" \
+            "THEME.md" \
+            "RELEASE_NOTES.md" \
+            "CONTRIBUTING.md" \
+            "SECURITY.md" \
+            || true
+          echo "markdownlint finished"
+
+      - name: HTML structure check
+        run: |
+          set -e
+          fail=0
+          for f in index.html records.html trademark-application.html; do
+            if [ ! -f "$f" ]; then
+              echo "::error file=$f::Missing required page"
+              fail=1
+              continue
+            fi
+            if ! grep -q "<!DOCTYPE html>" "$f" && ! grep -qi "<!doctype html>" "$f"; then
+              echo "::warning file=$f::No DOCTYPE"
+            fi
+            if ! grep -qi "<html" "$f"; then
+              echo "::error file=$f::Missing <html>"
+              fail=1
+            fi
+            if [ "$f" = "index.html" ] || [ "$f" = "records.html" ]; then
+              if ! grep -q "bx-nav" "$f"; then
+                echo "::error file=$f::Missing standard header (.bx-nav)"
+                fail=1
+              fi
+              if ! grep -q "bx-footer" "$f"; then
+                echo "::error file=$f::Missing standard footer (.bx-footer)"
+                fail=1
+              fi
+              if ! grep -q "BRANDEX LAW ASSOCIATES" "$f"; then
+                echo "::error file=$f::Missing brand wordmark"
+                fail=1
+              fi
+            fi
+            echo "OK $f ($(wc -c < "$f") bytes)"
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "HTML checks failed"
+            exit 1
+          fi
+          echo "All HTML checks passed"
+
+      - name: Required docs present
+        run: |
+          set -e
+          for f in README.md CHANGELOG.md DEPLOY-GUIDE.md THEME.md LICENSE; do
+            test -f "$f" || { echo "::error::$f missing"; exit 1; }
+            echo "OK $f"
+          done
