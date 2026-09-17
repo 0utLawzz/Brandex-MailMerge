@@ -6,194 +6,111 @@ Versioning follows [Semantic Versioning](https://semver.org/).
 
 ---
 
-## [1.2.0] — 2026-09-14
+## [1.3.0] — 2026-09-17
 
-### 🚀 New Features
+### Summary
 
-- **Record View Web Interface**: Added new `records.html` page for viewing trademark application records in a clean table format
-- **Required Field Validation**: Enhanced form validation to prevent document generation with empty critical fields
-- **Social Assets Management**: Added social media assets directory to gitignore and documentation
+Production UI lock for the Brandex Trademark Application CMS: unified Neo-Brutalism chrome, form defaults tuned for daily filing work, Record View analytics, and deploy/troubleshooting documentation so HTML vs Apps Script changes no longer get mixed up.
 
-### ✨ Enhancements
+**Live pages**
 
-- **Extended Required Fields**: Made additional fields mandatory for data quality:
-  - Trademark Number (previously optional)
-  - E-Stamp Issue Date
-  - Business Name / Trading As
-  - USING Year / Since
-  - Fallback Text
-  - Consultant Name (with flexible dropdown/manual entry)
+- CMS Home: https://0utlawzz.github.io/Brandex-MailMerge/
+- Application form: https://0utlawzz.github.io/Brandex-MailMerge/trademark-application.html
+- Record View: https://0utlawzz.github.io/Brandex-MailMerge/records.html
 
-- **UI Improvements**:
-  - Added "Record View" button with distinct theme color (yellow/accent3)
-  - Enhanced button styling with new `.btn-theme` class
-  - Color-coded status rows in Record View (DONE=green, ERROR=red, PENDING=yellow, etc.)
+### Added
 
-- **Backend Capabilities**:
-  - Added `getRecordsForView()` function to retrieve filtered record data
-  - Updated `doPost()` to handle `getRecords` action for Record View
-  - Records sorted by date (newest first) for better UX
+#### Standard Brandex chrome (all pages)
+- Shared **header** (`.bx-nav`): dark `#0C0C0C` sticky bar, maroon/gold **R** logo mark, wordmark **BRANDEX LAW ASSOCIATES** + subtitle *Trademark & IP Registry*
+- Shared **nav**: Home · Application · Records (active state = burnt orange fill)
+- Shared **footer** (`.bx-footer`): cream band, 3px black top border, teal CMS link
+- `THEME.md` — full Neo-Brutalism design reference (colors, type, borders, shadows, golden rules)
 
-### 📝 Documentation
+#### Record View analytics
+- Large KPI boxes: **Total · Pending Filing · Dispatched · Done**
+- Bar charts: **by month** (application date), **by consultant**, **filing & status**
+- Filters: search, filing status, year
+- Pagination: **50 records / page**, Back / Next
+- Default sort: **most recent date first**
+- Table fits viewport width (no horizontal scrollbar)
+- **+ New Application** CTA in page header
 
-- Updated README.md with Social section
-- Enhanced index.html to include Record View link in Trademark Application section
-- Added comprehensive field validation error messages
+#### Form defaults (v1.3)
+- **Class** defaults to **3** (Nice class description auto-fills)
+- **USING Year / Since** defaults to **2023**
+- **Consultant** defaults to **BRANDEX LAW ASSOCIATES**
+- **Trademark Number** is **optional** (required asterisk removed)
+- Fallback text: image upload → **IMAGE UPLOADED**; otherwise **[Text Here]**
 
-### 🔧 Technical
+#### CMS Home
+- Top quick actions: **＋ Trademark Application** + **Record View**
+- Menu labels aligned with new flows
+- Version stamp **CMS v1.3**
 
-- Fixed duplicate Issue Date display in trademark form (removed redundant readonly field)
-- Improved client-side validation logic with special handling for consultant selection
-- Enhanced form submission validation to catch empty fields before API calls
-
----
-
-[1.2.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.2.0
-[1.1.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.1.0
-
-## [1.1.0] — 2026-09-14
-
-### 🚀 Maintenance Release
-
-This release includes bug fixes, markdown linting improvements, and UI enhancements.
+#### Documentation
+- `DEPLOY-GUIDE.md` — two-platform architecture (GitHub Pages vs Apps Script), when to redeploy, why “one fix breaks another”, health checks
+- `THEME.md` — locked design tokens for future pages
+- `RELEASE_NOTES.md` — full v1.3.0 release write-up
+- README restored and aligned with v1.3 live links
 
 ### Fixed
 
-- **Duplicate Issue Date Display**: Removed redundant readonly text field, now only datetime picker shown
-- **Markdown Linting Issues**: Fixed table formatting and code block spacing in CHANGELOG.md and CONTRIBUTING.md
+- Blank / truncated `trademark-application.html` on GitHub Pages (recovery loader + patches from last known-good form)
+- Placeholder / empty stub files removed or replaced with clear restore instructions
+- Confusing dual-platform deploy process documented so Sheet edits are never confused with script deploys
 
-### ✨ Enhancements
+### Changed
 
-- **Improved Markdown Compliance**: Added proper spacing around code blocks, headings, and lists
-- **Better Code Documentation**: Added language specification to code blocks (bash)
+- Neo-Brutalism tokens applied consistently across Home, Form, and Records
+- Record View UX focused on office tracking (filing status + consultants + volume)
+
+### Ops notes
+
+| Change type | Action required |
+|-------------|-----------------|
+| Sheet cell / row edit | **None** — live immediately |
+| HTML / CSS / JS in this repo | `git push` → Pages auto-deploy (~1–2 min) + hard refresh |
+| Apps Script logic (`.gs`) | Paste into `Code.gs` → **Manage deployments → Edit existing → New version → Deploy** (never “New deployment”) |
+
+Record View live data needs Apps Script `doGet(?action=getRecords)`. See `Brandex-MailMerge-Full.gs` and `DEPLOY-GUIDE.md`.
+
+---
+
+## [1.2.0] — 2026-09-14
+
+### New Features
+
+- Record View web interface (`records.html`)
+- Required field validation on form submit
+- `getRecordsForView()` / `getRecords` action for live Sheet data
+
+### Enhancements
+
+- Extended required fields (TM, e-stamp, trading as, year, fallback, consultant)
+- Color-coded status rows in Record View
+
+---
+
+## [1.1.0] — 2026-09-14
+
+### Fixed
+
+- Duplicate Issue Date display
+- Markdown linting in CHANGELOG / CONTRIBUTING
 
 ---
 
 ## [1.0.0] — 2026-09-14
 
-### 🚀 First Stable Release
+### First stable release
 
-This release marks the production-hardened, fully polished version of the
-Brandex Trademark Application Generator — a tool that eliminates manual
-retyping of client data across TM-1 and TM-48 official forms.
-
----
-
-### Fixed
-
-- **CRITICAL — Duplicate client folders**: Google Drive's `createFolder()` never
-  throws on duplicate names, silently creating a new folder every time. The
-  old code used `try { createFolder() } catch { find }` — since the catch
-  never ran, a new duplicate-named folder was created on every submission.
-  Replaced with `getOrCreateClientFolder()`: always searches for an existing
-  folder first, only creates if none found. *(Commits: multiple sessions)*
-
-- **CRITICAL — Hardcoded IDs in 4 separate locations**: `MAIN_FOLDER_ID`,
-  `TM1_TEMPLATE_ID`, and `TM48_TEMPLATE_ID` were copy-pasted into 4 different
-  functions (3 as variable declarations, 1 as a raw string in `uploadToDrive()`).
-  Changing the ID in one place left the others pointing at the old value.
-  Consolidated into a single `⚙️ CONFIG` block at the top of the script. All
-  functions now reference the global variables — one change updates everything.
-
-- **Image confidentiality**: Uploaded trademark logos were being made
-  `ANYONE_WITH_LINK` (publicly viewable) via `file.setSharing()`. A client's
-  unfiled trademark logo should never be publicly accessible. Removed the
-  sharing call entirely — images are embedded into documents by reference and
-  remain private within the firm's Drive.
-
-- **Silent failure on image upload**: If the image save failed, the script only
-  logged to `Logger` and still returned "DONE ✅" to the frontend. The root
-  cause was invisible. Added `imageWarning` field to the response — frontend
-  now displays an orange warning alongside the success message if image saving
-  failed.
-
-- **Row stuck on "ON IT 👉" after failure**: If `processRow()` or
-  `processRowAndReturnLinks()` threw an error mid-way, the row's STATUS column
-  was never updated from `ON IT 👉`, making it look like it was still processing.
-  All three processing paths (web form, Process One menu, Process All bulk) now
-  explicitly set `ERROR ❌` on any exception.
-
-- **Corrupted `trademark-application.html`**: File had ~44,000 bytes of duplicate
-  CSS/HTML appended after the closing `</html>` tag. Truncated to correct content.
-
-- **`SECURITY.md` corruption**: File was 4.4 MB (binary/corrupt). Replaced with a
-  proper, concise security policy document.
+- Critical fixes: duplicate Drive folders, hardcoded template IDs, image confidentiality
+- FILING PROCESS column + 4-state STATUS system
+- Single CONFIG block, community docs (LICENSE, SECURITY, CONTRIBUTING)
 
 ---
 
-### Added
-
-- **FILING PROCESS column (Column V)**: A second, independent status column for
-  manual office tracking. Values: `PENDING` → `DISPATCHED 📬` / `REVIEW` /
-  `REJECTED ❌`. Set automatically to `PENDING` on every new web-form submission.
-  The automation never changes it after that — office staff update it directly in
-  the Sheet.
-
-- **4-state STATUS system**: Standardized `START 💫` → `ON IT 👉` → `DONE ✅` /
-  `ERROR ❌`. Added `ERROR ❌` as a fourth state with dropdown validation and
-  conditional formatting (light red row highlight).
-
-- **`@OnlyCurrentDoc` security annotation**: Restricts the script's authorization
-  scope to only the bound spreadsheet, reducing blast radius.
-
-- **Single CONFIG block**: `MAIN_FOLDER_ID`, `TM1_TEMPLATE_ID`, `TM48_TEMPLATE_ID`
-  now live in exactly one place — the `⚙️ CONFIG` section at the top of
-  `Brandex-MailMerge-Full.gs`. Update once, applies everywhere.
-
-- **Class/Consultant auto-fill in the Sheet**: Added `onEdit()` trigger so selecting
-  a class number in Column G auto-fills the description in Column H, and selecting
-  a consultant in Column R auto-fills their address in Column S — mirroring the
-  web form's behavior for rows entered directly in the Sheet.
-
-- **Dropdown validation for CLASS and CON-NAME**: Column G now only accepts valid
-  Nice Classification numbers (1–45). Column R suggests known consultants but
-  allows manual entry (`allowInvalid: true`).
-
-- **Formatting via `setupSpreadsheet()`**: Heading row uses "Ysabeau SC" font on
-  a dark background; body rows use "Times New Roman", left-aligned, CLIP wrap
-  strategy (no text overflow into adjacent cells).
-
-- **Toast notifications**: `setupSpreadsheet()` and `setupDropdowns()` now show
-  a non-blocking sheet toast instead of a blocking `alert()` dialog.
-
-- **Success screen redesign**: On successful generation, the frontend now displays
-  the **Application/Mark Name**, **Applicant Name**, and **Class** prominently —
-  instead of just a serial number and row index (which are internal references
-  of no value to the user).
-
-- **Menu icons**: Sheet menu updated to `📋 TRADEMARK TOOLS` with `📊 Setup Headers`
-  and `🔽 Setup Dropdowns` icons.
-
-- **`LICENSE`** (MIT), **`CONTRIBUTING.md`**, **`SECURITY.md`**, **`CHANGELOG.md`**:
-  Full GitHub community standards documentation added.
-
-- **`README.md` rewrite**: Professional README with problem/solution framing,
-  file-placement table ("which file goes where"), config sync instructions,
-  status system documentation, and CMS menu reference.
-
----
-
-### Removed
-
-- **Sidebar Image Uploader** (`showImageUploader`, `uploadToDrive`,
-  `writeImageIdToSheet`): This tool saved images to the MAIN folder root
-  (not inside the client folder), was not connected to any menu, and is no
-  longer needed since all uploads flow through the web form. Removed cleanly.
-  Historical copy available in the Claude conversation referenced in the
-  project's commit history.
-
----
-
-### Architecture
-
-| File                       | Location                               | Purpose                          |
-|----------------------------|----------------------------------------|----------------------------------|
-| `Brandex-MailMerge-Full.gs` | Google Apps Script (`Code.gs`)          | Backend                          |
-| `trademark-application.html` | GitHub Pages                           | Public web form                  |
-| `records.html`             | GitHub Pages                           | Record view web interface        |
-| `index.html`                | GitHub Pages                           | CMS home / links hub             |
-| `README.md`, `CONTRIBUTING.md`, `SECURITY.md`, `LICENSE`, `CHANGELOG.md` | GitHub | Documentation |
-
----
-
-[1.0.0]: https://github.com/0utlawzz/Brandex-MailMerge/releases/tag/v1.0.0
+[1.3.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.3.0
+[1.2.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.2.0
+[1.1.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.1.0
+[1.0.0]: https://github.com/0utLawzz/Brandex-MailMerge/releases/tag/v1.0.0
