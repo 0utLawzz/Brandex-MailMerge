@@ -15,10 +15,21 @@
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body { font-family: 'Space Grotesk', Arial, sans-serif; background: var(--bg); color: var(--black); min-height: 100vh; line-height: 1.5; text-transform: uppercase; }
-    .navbar { background: var(--bg2); height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid var(--black); }
-    .logo-text { font-family: 'Bebas Neue', sans-serif; font-size: 1.15rem; letter-spacing: 1px; color: #FAF6EE; }
-    .logo-text span { color: #C9A227; }
-    .nav-right { font-family: 'DM Mono', monospace; font-size: 0.68rem; color: #888; letter-spacing: 1px; }
+    .bx-nav { background: #0C0C0C; height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #0C0C0C; gap: 12px; }
+    .bx-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
+    .bx-mark { width: 40px; height: 40px; background: #7A1F1F; border: 2px solid #C9A227; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .bx-mark-r { width: 24px; height: 24px; border-radius: 50%; background: #C9A227; color: #7A1F1F; font-family: 'Bebas Neue', Arial Black, Arial, sans-serif; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 1.5px solid #FAF6EE; line-height: 1; }
+    .bx-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
+    .bx-brand-main { font-family: 'Bebas Neue', Arial Black, Arial, sans-serif; font-size: 1.05rem; letter-spacing: 1px; color: #FAF6EE; white-space: nowrap; }
+    .bx-brand-sub { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 1.4px; color: #C9A227; text-transform: uppercase; margin-top: 2px; }
+    .bx-nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
+    .bx-nav-link { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: #888; padding: 6px 10px; border: 2px solid transparent; }
+    .bx-nav-link:hover { color: #FAF6EE; background: #1A1A1A; border-color: #333; }
+    .bx-nav-link.active { color: #FAF6EE; background: #C94A00; border-color: #C94A00; }
+    .bx-nav-pill { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 1.2px; color: #C9A227; border: 1.5px solid #333; padding: 4px 8px; text-transform: uppercase; }
+    .bx-footer { text-align: center; padding: 16px 12px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1.5px; color: #666; border-top: 3px solid #0C0C0C; background: #F0E8D0; text-transform: uppercase; }
+    .bx-footer a { color: #0D9970; text-decoration: none; }
+    @media (max-width: 640px) { .bx-brand-sub { display: none; } .bx-brand-main { font-size: 0.85rem; } }
     .page { max-width: 100%; margin: 0 auto; padding: 20px 12px 40px; }
     .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
     .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 1px; }
@@ -58,11 +69,11 @@
     .thumb { width: 34px; height: 34px; object-fit: contain; border: 2px solid var(--black); background: #fff; display: block; margin: 0 auto; }
     .thumb-placeholder { width: 34px; height: 34px; border: 2px dashed #999; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; color: #666; margin: 0 auto; font-family: 'DM Mono', monospace; }
     .filing-badge { display: inline-block; padding: 2px 6px; border: 2px solid var(--black); font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.4px; white-space: nowrap; }
-    .filing-pending { background: #FFE066; color: var(--black); }
-    .filing-dispatched { background: transparent; color: var(--black); }
-    .filing-hold { background: #7EB8DA; color: var(--black); }
+    .filing-pending { background: #FFE066; }
+    .filing-dispatched { background: transparent; }
+    .filing-hold { background: #7EB8DA; }
     .filing-rejected { background: #E74C3C; color: #fff; }
-    .filing-other { background: #eee; color: var(--black); }
+    .filing-other { background: #eee; }
     .loading, .empty, .error { padding: 40px 20px; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.85rem; border: 3px solid var(--black); background: var(--panel); box-shadow: var(--shadow); }
     .error { color: #c0392b; background: #fde2e2; }
     .pagination { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
@@ -72,9 +83,20 @@
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo-text">BRANDEX <span>CMS</span></div>
-    <div class="nav-right">RECORD VIEW</div>
+  <nav class="bx-nav" role="navigation" aria-label="Main">
+    <a class="bx-brand" href="index.html">
+      <div class="bx-mark" aria-hidden="true"><span class="bx-mark-r">R</span></div>
+      <div class="bx-brand-text">
+        <span class="bx-brand-main">BRANDEX LAW ASSOCIATES</span>
+        <span class="bx-brand-sub">Trademark & IP Registry</span>
+      </div>
+    </a>
+    <div class="bx-nav-right">
+      <a class="bx-nav-link" href="index.html">Home</a>
+      <a class="bx-nav-link" href="trademark-application.html">Application</a>
+      <a class="bx-nav-link active" href="records.html">Records</a>
+      <span class="bx-nav-pill">CMS v1.3</span>
+    </div>
   </nav>
   <div class="page">
     <div class="page-header">
@@ -118,13 +140,11 @@
       <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
     </div>
   </div>
+  <footer class="bx-footer">Brandex Law Associates · Trademark & IP Registry · <a href="index.html">CMS</a> · v1.3.0</footer>
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUMRVcdasDxGIaaPKbSzhEVbkKyMyYLNv4-NQ8pyGJEjWOukRPzS3Pt5Da6_CdNmP33Q/exec";
     const PAGE_SIZE = 50;
-    let ALL_RECORDS = [];
-    let FILTERED_RECORDS = [];
-    let currentPage = 1;
-
+    let ALL_RECORDS = [], FILTERED_RECORDS = [], currentPage = 1;
     function getStatusClass(status) {
       if (!status) return '';
       const s = String(status).toLowerCase();
@@ -162,17 +182,12 @@
       if (year < 100) year += 2000;
       return new Date(year, mon, day).getTime();
     }
-    function sortByDateDesc(records) {
-      return records.slice().sort((a,b) => parseDate(b.date) - parseDate(a.date));
-    }
+    function sortByDateDesc(records) { return records.slice().sort((a,b) => parseDate(b.date) - parseDate(a.date)); }
     function parseMonthKey(d) {
       if (!d) return 'UNKNOWN';
       const s = String(d).toUpperCase().trim();
       const m1 = s.match(/(\d{1,2})[-\/]([A-Z]{3})[-\/](\d{2,4})/);
-      if (m1) {
-        let y = parseInt(m1[3],10); if (y < 100) y += 2000;
-        return m1[2] + ' ' + y;
-      }
+      if (m1) { let y = parseInt(m1[3],10); if (y < 100) y += 2000; return m1[2] + ' ' + y; }
       const dt = new Date(d);
       if (!isNaN(dt.getTime())) {
         const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
@@ -210,10 +225,7 @@
         byStatus[st||'—'] = (byStatus[st||'—']||0)+1;
       });
       const set=(id,v)=>{ const n=document.getElementById(id); if(n) n.textContent=v; };
-      set('statTotal', records.length);
-      set('statPending', pending);
-      set('statDispatched', dispatched);
-      set('statDone', done);
+      set('statTotal', records.length); set('statPending', pending); set('statDispatched', dispatched); set('statDone', done);
       const monthOrder=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
       const monthEntries=Object.entries(byMonth).sort((a,b)=>{
         const pa=a[0].split(' '), pb=b[0].split(' ');
@@ -225,8 +237,7 @@
       renderBars('chartConsultant', Object.entries(byCon).sort((a,b)=>b[1]-a[1]), 'green');
       const filingEntries=Object.entries(byFiling).sort((a,b)=>b[1]-a[1]);
       const statusEntries=Object.entries(byStatus).sort((a,b)=>b[1]-a[1]);
-      const merged=filingEntries.slice(0,5).concat(statusEntries.slice(0,3).map(([k,v])=>['ST: '+k,v]));
-      renderBars('chartFiling', merged, 'blue');
+      renderBars('chartFiling', filingEntries.slice(0,5).concat(statusEntries.slice(0,3).map(([k,v])=>['ST: '+k,v])), 'blue');
     }
     function populateYearFilter() {
       const years=[...new Set(ALL_RECORDS.map(r=>String(r.year||'').trim()).filter(Boolean))].sort((a,b)=>b-a);
@@ -244,8 +255,7 @@
         if(!q) return true;
         return [r.folder,r.tm,r.appName,r.appTrade,r.conName,r.classNo,r.status,r.filingProcess,r.noImg,r.date].some(v=>String(v||'').toLowerCase().includes(q));
       });
-      currentPage=1;
-      renderPage();
+      currentPage=1; renderPage();
     }
     function changePage(delta) {
       const totalPages=Math.max(1, Math.ceil(FILTERED_RECORDS.length/PAGE_SIZE));
@@ -265,9 +275,7 @@
       const pageRecords=FILTERED_RECORDS.slice(start, start+PAGE_SIZE);
       let html='<div class="table-container"><table><thead><tr><th>Img</th><th>Mark Text</th><th>Filing</th><th>Date</th><th>Mark Name</th><th>TM No</th><th>Class</th><th>Applicant</th><th>Trading As</th><th>Year</th><th>Consultant</th><th>Status</th></tr></thead><tbody>';
       pageRecords.forEach(r=>{
-        const statusClass=getStatusClass(r.status);
-        const fClass=filingClass(r.filingProcess);
-        html+='<tr class="'+statusClass+'"><td class="thumb-cell">'+thumbHtml(r.img)+'</td><td title="'+esc(r.noImg)+'">'+esc(r.noImg)+'</td><td><span class="filing-badge '+fClass+'">'+esc(r.filingProcess||'—')+'</span></td><td title="'+esc(r.date)+'">'+esc(r.date)+'</td><td title="'+esc(r.folder)+'">'+esc(r.folder)+'</td><td title="'+esc(r.tm)+'">'+esc(r.tm)+'</td><td>'+esc(r.classNo)+'</td><td title="'+esc(r.appName)+'">'+esc(r.appName)+'</td><td title="'+esc(r.appTrade)+'">'+esc(r.appTrade)+'</td><td>'+esc(r.year)+'</td><td title="'+esc(r.conName)+'">'+esc(r.conName)+'</td><td title="'+esc(r.status)+'">'+esc(r.status)+'</td></tr>';
+        html+='<tr class="'+getStatusClass(r.status)+'"><td class="thumb-cell">'+thumbHtml(r.img)+'</td><td title="'+esc(r.noImg)+'">'+esc(r.noImg)+'</td><td><span class="filing-badge '+filingClass(r.filingProcess)+'">'+esc(r.filingProcess||'—')+'</span></td><td>'+esc(r.date)+'</td><td title="'+esc(r.folder)+'">'+esc(r.folder)+'</td><td>'+esc(r.tm)+'</td><td>'+esc(r.classNo)+'</td><td title="'+esc(r.appName)+'">'+esc(r.appName)+'</td><td title="'+esc(r.appTrade)+'">'+esc(r.appTrade)+'</td><td>'+esc(r.year)+'</td><td title="'+esc(r.conName)+'">'+esc(r.conName)+'</td><td>'+esc(r.status)+'</td></tr>';
       });
       html+='</tbody></table></div>';
       container.innerHTML=html;
@@ -282,8 +290,7 @@
       document.getElementById('countBadge').textContent='…';
       document.getElementById('pagination').style.display='none';
       try {
-        const url=APPS_SCRIPT_URL+'?action=getRecords&_='+Date.now();
-        const res=await fetch(url,{method:'GET',redirect:'follow'});
+        const res=await fetch(APPS_SCRIPT_URL+'?action=getRecords&_='+Date.now(),{method:'GET',redirect:'follow'});
         const text=await res.text();
         let data; try{ data=JSON.parse(text); } catch{ throw new Error('Invalid response (not JSON). Redeploy Web App as Anyone.'); }
         if(!data.ok) throw new Error(data.error||'Server returned error');
@@ -293,8 +300,7 @@
           status:r.status||'', filingProcess:r.filingProcess||''
         }));
         ALL_RECORDS=sortByDateDesc(ALL_RECORDS);
-        populateYearFilter();
-        applyFilters();
+        populateYearFilter(); applyFilters();
       } catch(err) {
         container.innerHTML='<div class="error">Live fetch failed: '+esc(err.message)+'<br><br>1) Apps Script mein doGet() add karo<br>2) Deploy → New version → Deploy<br>3) Who has access = Anyone</div>';
         document.getElementById('countBadge').textContent='ERR';
