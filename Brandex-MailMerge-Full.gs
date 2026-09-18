@@ -26,7 +26,7 @@
 // ═══════════════════════════════════════════════════════════════
 
 // If you only need the doGet block, use ADD-doGet.gs or paste this:
-/*
+
 function doGet(e) {
   try {
     var action = (e && e.parameter && e.parameter.action) ? e.parameter.action : "";
@@ -41,4 +41,3 @@ function doGet(e) {
     return jsonResponse({ ok: false, error: String(err.message || err) });
   }
 }
-*/
