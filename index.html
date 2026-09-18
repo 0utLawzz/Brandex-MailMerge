@@ -14,7 +14,7 @@
     :root {
       --bg: #F0E8D0; --bg-alt: #E8DFC7; --bg2: #0C0C0C; --panel: #FAF6EE;
       --black: #0C0C0C; --accent: #C94A00; --accent2: #0D9970; --accent3: #D4A800;
-      --maroon: #7A1F1F; --shadow: 5px 5px 0 #0C0C0C; --shadow-sm: 3px 3px 0 #0C0C0C; --radius: 6px;
+      --maroon: #6C1C1F; --shadow: 5px 5px 0 #0C0C0C; --shadow-sm: 3px 3px 0 #0C0C0C; --radius: 6px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -29,11 +29,11 @@
     }
     .bx-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
     .bx-mark {
-      width: 40px; height: 40px; background: #7A1F1F; border: 2px solid #C9A227;
+      width: 40px; height: 40px; background: #6C1C1F; border: 2px solid #B0740E;
       border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
     }
     .bx-mark-r {
-      width: 24px; height: 24px; border-radius: 50%; background: #C9A227; color: #7A1F1F;
+      width: 24px; height: 24px; border-radius: 50%; background: #B0740E; color: #6C1C1F;
       font-family: 'Bebas Neue', 'Arial Black', Arial, sans-serif; font-size: 0.95rem;
       display: flex; align-items: center; justify-content: center; border: 1.5px solid #FAF6EE; line-height: 1;
     }
@@ -44,7 +44,7 @@
     }
     .bx-brand-sub {
       font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 1.4px;
-      color: #C9A227; text-transform: uppercase; margin-top: 2px;
+      color: #D6A64B; text-transform: uppercase; margin-top: 2px;
     }
     .bx-nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
     .bx-nav-link {
@@ -52,10 +52,10 @@
       text-transform: uppercase; text-decoration: none; color: #888; padding: 6px 10px; border: 2px solid transparent;
     }
     .bx-nav-link:hover { color: #FAF6EE; background: #1A1A1A; border-color: #333; }
-    .bx-nav-link.active { color: #FAF6EE; background: #C94A00; border-color: #C94A00; }
+    .bx-nav-link.active { color: #FAF6EE; background: #6C1C1F; border-color: #B0740E; }
     .bx-nav-pill {
       font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 1.2px;
-      color: #C9A227; border: 1.5px solid #333; padding: 4px 8px; text-transform: uppercase;
+      color: #D6A64B; border: 1.5px solid #333; padding: 4px 8px; text-transform: uppercase;
     }
     .bx-footer {
       text-align: center; padding: 16px 12px; font-family: 'DM Mono', monospace;
@@ -131,7 +131,7 @@
       border-radius: 4px; flex-shrink: 0;
     }
     .btn-content { flex: 1; display: flex; flex-direction: column; gap: 5px; }
-    .btn-label { font-size: 0.9rem; }
+    .btn-label { font-size: 1.05rem; }
     .btn-links { display: flex; flex-wrap: wrap; gap: 6px; }
     .tag {
       font-size: 0.58rem; letter-spacing: 0.7px; padding: 3px 8px;
@@ -140,7 +140,7 @@
     .tag-live { background: #C94A00; color: #fff; }
     .tag-deploy { background: #0D9970; color: #fff; }
     .tag-sheet { background: #D4A800; color: #0C0C0C; }
-    .tag-tool { background: #7A1F1F; color: #fff; }
+    .tag-tool { background: #6C1C1F; color: #fff; }
     .tag-soon { background: #888; color: #fff; }
     .tag-link { text-decoration: none; cursor: pointer; }
     .menu-card { cursor: default; }
@@ -169,11 +169,6 @@
     <div class="welcome-stamp">CMS v1.3</div>
     <h1 class="welcome-title">BRANDEX LAW ASSOCIATES CMS</h1>
     <p class="welcome-sub">Select a tool below. All data is written in CAPITAL letters.</p>
-
-    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-bottom:28px;animation:fadeUp 0.45s ease 0.25s both;">
-      <a href="trademark-application.html" onclick="playClick(this)" style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:1px;padding:12px 18px;background:#C94A00;color:#fff;border:2.5px solid #0C0C0C;border-radius:6px;box-shadow:3px 3px 0 #0C0C0C;text-decoration:none;text-transform:uppercase;">＋ Trademark Application</a>
-      <a href="records.html" onclick="playClick(this)" style="font-family:'DM Mono',monospace;font-size:0.75rem;letter-spacing:1px;padding:12px 18px;background:#FAF6EE;color:#0C0C0C;border:2.5px solid #0C0C0C;border-radius:6px;box-shadow:3px 3px 0 #0C0C0C;text-decoration:none;text-transform:uppercase;">Record View</a>
-    </div>
 
     <div class="menu-buttons">
       <div class="menu-btn menu-card">
@@ -241,9 +236,7 @@
     </div>
   </div>
 
-  <footer class="bx-footer">
-    Brandex Law Associates · Trademark & IP Registry · <a href="index.html">CMS</a> · v1.3.0
-  </footer>
+  <footer class="bx-footer" style="background:#6C1C1F;color:#FFF9F0;border-top:none;letter-spacing:1px;">BRANDEX LAW ASSOCIATES · WWW.BRANDEX.PK · INFO@BRANDEX.PK · +92 336 0015009 · ISLAMABAD · KARACHI · LAHORE · MULTAN · RAWALPINDI</footer>
 
   <script>
     function playClick(el) {
