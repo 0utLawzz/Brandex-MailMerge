@@ -17,22 +17,22 @@
     body { font-family: 'Space Grotesk', Arial, sans-serif; background: var(--bg); color: var(--black); min-height: 100vh; line-height: 1.5; text-transform: uppercase; }
     .bx-nav { background: #0C0C0C; height: 58px; display: flex; align-items: center; justify-content: space-between; padding: 0 16px; position: sticky; top: 0; z-index: 100; border-bottom: 3px solid #0C0C0C; gap: 12px; }
     .bx-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
-    .bx-mark { width: 40px; height: 40px; background: #7A1F1F; border: 2px solid #C9A227; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
-    .bx-mark-r { width: 24px; height: 24px; border-radius: 50%; background: #C9A227; color: #7A1F1F; font-family: 'Bebas Neue', Arial Black, Arial, sans-serif; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 1.5px solid #FAF6EE; line-height: 1; }
+    .bx-mark { width: 40px; height: 40px; background: #6C1C1F; border: 2px solid #B0740E; border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+    .bx-mark-r { width: 24px; height: 24px; border-radius: 50%; background: #B0740E; color: #6C1C1F; font-family: 'Bebas Neue', Arial Black, Arial, sans-serif; font-size: 0.95rem; display: flex; align-items: center; justify-content: center; border: 1.5px solid #FAF6EE; line-height: 1; }
     .bx-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
     .bx-brand-main { font-family: 'Bebas Neue', Arial Black, Arial, sans-serif; font-size: 1.05rem; letter-spacing: 1px; color: #FAF6EE; white-space: nowrap; }
-    .bx-brand-sub { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 1.4px; color: #C9A227; text-transform: uppercase; margin-top: 2px; }
+    .bx-brand-sub { font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 1.4px; color: #D6A64B; text-transform: uppercase; margin-top: 2px; }
     .bx-nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
     .bx-nav-link { font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1px; text-transform: uppercase; text-decoration: none; color: #888; padding: 6px 10px; border: 2px solid transparent; }
     .bx-nav-link:hover { color: #FAF6EE; background: #1A1A1A; border-color: #333; }
-    .bx-nav-link.active { color: #FAF6EE; background: #C94A00; border-color: #C94A00; }
+    .bx-nav-link.active { color: #FAF6EE; background: #6C1C1F; border-color: #B0740E; }
     .bx-nav-pill { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 1.2px; color: #C9A227; border: 1.5px solid #333; padding: 4px 8px; text-transform: uppercase; }
     .bx-footer { text-align: center; padding: 16px 12px; font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1.5px; color: #666; border-top: 3px solid #0C0C0C; background: #F0E8D0; text-transform: uppercase; }
     .bx-footer a { color: #0D9970; text-decoration: none; }
     @media (max-width: 640px) { .bx-brand-sub { display: none; } .bx-brand-main { font-size: 0.85rem; } }
     .page { max-width: 100%; margin: 0 auto; padding: 20px 12px 40px; }
     .page-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 18px; flex-wrap: wrap; gap: 12px; }
-    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 1px; }
+    .page-header h1 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; }
     .back-btn { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 1px; padding: 9px 14px; background: var(--panel); border: 2.5px solid var(--black); border-radius: var(--radius); box-shadow: var(--shadow-sm); cursor: pointer; text-decoration: none; color: var(--black); }
     .toolbar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-bottom: 14px; }
     .search-wrap { flex: 1; min-width: 180px; }
@@ -42,8 +42,8 @@
     .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 18px; }
     @media (max-width: 900px) { .stats-grid { grid-template-columns: repeat(2, 1fr); } }
     .stat-box { background: var(--panel); border: 3px solid var(--black); box-shadow: var(--shadow-sm); padding: 16px 14px; text-align: center; }
-    .stat-box .num { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; letter-spacing: 1px; }
-    .stat-box .lbl { font-family: 'DM Mono', monospace; font-size: 0.65rem; letter-spacing: 1px; margin-top: 6px; color: #444; }
+    .stat-box .num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; line-height: 1; letter-spacing: 1px; }
+    .stat-box .lbl { font-family: 'DM Mono', monospace; font-size: 0.78rem; letter-spacing: 1px; margin-top: 6px; color: #444; }
     .stat-box.total { background: var(--accent2); } .stat-box.total .num, .stat-box.total .lbl { color: #fff; }
     .stat-box.pending { background: #FFE066; }
     .stat-box.dispatched { background: #FAF6EE; }
@@ -61,19 +61,25 @@
     .bar-fill.blue { background: #7EB8DA; }
     .bar-count { width: 28px; text-align: right; font-family: 'DM Mono', monospace; font-size: 0.62rem; }
     .table-container { overflow-x: hidden; border: 3px solid var(--black); box-shadow: var(--shadow); background: var(--panel); width: 100%; }
-    table { width: 100%; border-collapse: collapse; font-size: 0.7rem; table-layout: fixed; }
-    th { font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 0.5px; background: var(--bg2); color: #FAF6EE; padding: 8px 4px; text-align: left; border-bottom: 2px solid var(--black); white-space: nowrap; position: sticky; top: 0; z-index: 2; }
-    td { padding: 6px 4px; border-bottom: 1px solid #ddd; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    table { width: 100%; border-collapse: collapse; font-size: 0.82rem; table-layout: fixed; }
+    th { font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.5px; background: var(--bg2); color: #FAF6EE; padding: 8px 4px; text-align: left; border-bottom: 2px solid var(--black); white-space: nowrap; position: sticky; top: 0; z-index: 2; }
+    td { padding: 10px 6px; border-bottom: 1px solid #ddd; vertical-align: middle; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     tr:hover td { background: var(--bg-alt); }
     .thumb-cell { width: 44px; text-align: center; padding: 3px; }
     .thumb { width: 34px; height: 34px; object-fit: contain; border: 2px solid var(--black); background: #fff; display: block; margin: 0 auto; }
     .thumb-placeholder { width: 34px; height: 34px; border: 2px dashed #999; background: #f0f0f0; display: flex; align-items: center; justify-content: center; font-size: 0.5rem; color: #666; margin: 0 auto; font-family: 'DM Mono', monospace; }
-    .filing-badge { display: inline-block; padding: 2px 6px; border: 2px solid var(--black); font-family: 'DM Mono', monospace; font-size: 0.55rem; letter-spacing: 0.4px; white-space: nowrap; }
+    .filing-badge { display: inline-block; padding: 2px 6px; border: 2px solid var(--black); font-family: 'DM Mono', monospace; font-size: 0.7rem; letter-spacing: 0.4px; white-space: nowrap; }
     .filing-pending { background: #FFE066; }
     .filing-dispatched { background: transparent; }
     .filing-hold { background: #7EB8DA; }
     .filing-rejected { background: #E74C3C; color: #fff; }
     .filing-other { background: #eee; }
+    .status-tag { display: inline-block; padding: 4px 10px; border: 2px solid var(--black); font-family: 'DM Mono', monospace; font-size: 0.72rem; letter-spacing: 0.5px; font-weight: 700; }
+    .status-start { background: #FFE066; }
+    .status-processing { background: #7EB8DA; }
+    .status-done { background: #0D9970; color: #fff; }
+    .status-error { background: #E74C3C; color: #fff; }
+    .status-other { background: #eee; }
     .loading, .empty, .error { padding: 40px 20px; text-align: center; font-family: 'DM Mono', monospace; font-size: 0.85rem; border: 3px solid var(--black); background: var(--panel); box-shadow: var(--shadow); }
     .error { color: #c0392b; background: #fde2e2; }
     .pagination { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 16px; flex-wrap: wrap; }
@@ -103,6 +109,7 @@
       <h1>Trademark Records</h1>
       <div style="display:flex;gap:10px;flex-wrap:wrap;">
         <a class="back-btn" href="trademark-application.html" style="background:#C94A00;color:#fff;">+ New Application</a>
+        <a class="back-btn" href="https://docs.google.com/spreadsheets/d/1u7oYu63G28y54byhOw-2KS3nlt7GrpmbkT3uKMX2b8M/edit?gid=1496727423#gid=1496727423" target="_blank" rel="noopener">Open Sheet</a>
         <a class="back-btn" href="index.html">← CMS Home</a>
       </div>
     </div>
@@ -122,16 +129,16 @@
       </select>
       <div class="count-badge" id="countBadge">…</div>
     </div>
-    <div class="stats-grid" id="statsGrid">
+    <div class="stats-grid" id="statsGrid" style="grid-template-columns:repeat(3,1fr);">
       <div class="stat-box total"><div class="num" id="statTotal">—</div><div class="lbl">Total Records</div></div>
       <div class="stat-box pending"><div class="num" id="statPending">—</div><div class="lbl">Pending Filing</div></div>
       <div class="stat-box dispatched"><div class="num" id="statDispatched">—</div><div class="lbl">Dispatched</div></div>
-      <div class="stat-box error"><div class="num" id="statDone">—</div><div class="lbl">Done / Complete</div></div>
     </div>
-    <div class="charts-row" id="chartsRow">
+    <div class="charts-row" id="chartsRow" style="grid-template-columns:1fr 1fr 1fr 1fr;">
       <div class="chart-card"><h3>📅 By Month</h3><div id="chartMonth"></div></div>
       <div class="chart-card"><h3>👤 By Consultant</h3><div id="chartConsultant"></div></div>
-      <div class="chart-card"><h3>📬 Filing & Status</h3><div id="chartFiling"></div></div>
+      <div class="chart-card"><h3>📬 Filing Process</h3><div id="chartFiling"></div></div>
+      <div class="chart-card"><h3>⚡ Status</h3><div id="chartStatus"></div></div>
     </div>
     <div id="recordsContainer"><div class="loading">Loading live records from Google Sheet…</div></div>
     <div class="pagination" id="pagination" style="display:none;">
@@ -140,17 +147,53 @@
       <button class="page-btn" id="nextBtn" onclick="changePage(1)">Next →</button>
     </div>
   </div>
-  <footer class="bx-footer">Brandex Law Associates · Trademark & IP Registry · <a href="index.html">CMS</a> · v1.3.0</footer>
+  <footer class="bx-footer" style="background:#6C1C1F;color:#FFF9F0;border-top:none;">BRANDEX LAW ASSOCIATES · WWW.BRANDEX.PK · INFO@BRANDEX.PK · +92 336 0015009 · ISLAMABAD · KARACHI · LAHORE · MULTAN · RAWALPINDI</footer>
   <script>
     const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyUMRVcdasDxGIaaPKbSzhEVbkKyMyYLNv4-NQ8pyGJEjWOukRPzS3Pt5Da6_CdNmP33Q/exec";
+    const SHEET_URL = "https://docs.google.com/spreadsheets/d/1u7oYu63G28y54byhOw-2KS3nlt7GrpmbkT3uKMX2b8M/edit?gid=1496727423#gid=1496727423";
     const PAGE_SIZE = 50;
     let ALL_RECORDS = [], FILTERED_RECORDS = [], currentPage = 1;
+    function normalizeStatus(status) {
+      const s = String(status || '').toUpperCase();
+      if (s.includes('ERROR') || s.includes('REJECT')) return 'ERROR';
+      if (s.includes('DONE') || s.includes('COMPLETE')) return 'DONE';
+      if (s.includes('ON IT') || s.includes('PROCESS')) return 'PROCESSING';
+      if (s.includes('START')) return 'START';
+      if (!s.trim()) return '';
+      return s.replace(/[^A-Z]/g, '') || 'START';
+    }
+    function statusTagClass(status) {
+      const n = normalizeStatus(status);
+      if (n === 'DONE') return 'status-done';
+      if (n === 'PROCESSING') return 'status-processing';
+      if (n === 'START') return 'status-start';
+      if (n === 'ERROR') return 'status-error';
+      return 'status-other';
+    }
     function getStatusClass(status) {
-      if (!status) return '';
-      const s = String(status).toLowerCase();
-      if (s.includes('error') || s.includes('reject')) return 'status-error';
-      if (s.includes('on it')) return 'status-onit';
+      const n = normalizeStatus(status);
+      if (n === 'ERROR') return 'status-error';
+      if (n === 'PROCESSING') return 'status-onit';
       return '';
+    }
+    function formatFilingDate(d) {
+      if (!d) return '—';
+      if (d instanceof Date && !isNaN(d.getTime())) {
+        const months = ['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
+        const day = String(d.getDate()).padStart(2,'0');
+        const mon = months[d.getMonth()];
+        const yy = String(d.getFullYear()).slice(-2);
+        let h = d.getHours(), m = d.getMinutes();
+        const ap = h >= 12 ? 'PM' : 'AM';
+        h = h % 12; if (h === 0) h = 12;
+        return day + '-' + mon + '-' + yy + ' ' + String(h).padStart(2,'0') + ':' + String(m).padStart(2,'0') + ' ' + ap;
+      }
+      const s = String(d).trim();
+      if (!s) return '—';
+      // try parse common formats
+      const t = Date.parse(s);
+      if (!isNaN(t)) return formatFilingDate(new Date(t));
+      return s;
     }
     function filingClass(val) {
       if (!val) return 'filing-other';
@@ -163,7 +206,12 @@
     }
     function esc(v) {
       if (v === null || v === undefined) return '—';
-      return String(v).replace(/&/g,'&').replace(/</g,'<').replace(/>/g,'>').replace(/"/g,'"');
+      return String(v)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
     }
     function thumbHtml(imgId) {
       if (!imgId || !String(imgId).trim()) return '<div class="thumb-placeholder">N/A</div>';
@@ -184,7 +232,7 @@
     }
     function sortByDateDesc(records) { return records.slice().sort((a,b) => parseDate(b.date) - parseDate(a.date)); }
     function parseMonthKey(d) {
-      if (!d) return 'UNKNOWN';
+      if (!d || !String(d).trim()) return null;
       const s = String(d).toUpperCase().trim();
       const m1 = s.match(/(\d{1,2})[-\/]([A-Z]{3})[-\/](\d{2,4})/);
       if (m1) { let y = parseInt(m1[3],10); if (y < 100) y += 2000; return m1[2] + ' ' + y; }
@@ -217,7 +265,7 @@
         if (f.includes('DISPATCHED')) dispatched++;
         if (st.includes('DONE')) done++;
         const mk = parseMonthKey(r.date);
-        byMonth[mk] = (byMonth[mk]||0)+1;
+        if (mk) byMonth[mk] = (byMonth[mk]||0)+1;
         const c = String(r.conName||'UNKNOWN').trim()||'UNKNOWN';
         const short = c.length>18 ? c.slice(0,16)+'…' : c;
         byCon[short] = (byCon[short]||0)+1;
@@ -225,7 +273,7 @@
         byStatus[st||'—'] = (byStatus[st||'—']||0)+1;
       });
       const set=(id,v)=>{ const n=document.getElementById(id); if(n) n.textContent=v; };
-      set('statTotal', records.length); set('statPending', pending); set('statDispatched', dispatched); set('statDone', done);
+      set('statTotal', records.length); set('statPending', pending); set('statDispatched', dispatched);
       const monthOrder=['JAN','FEB','MAR','APR','MAY','JUN','JUL','AUG','SEP','OCT','NOV','DEC'];
       const monthEntries=Object.entries(byMonth).sort((a,b)=>{
         const pa=a[0].split(' '), pb=b[0].split(' ');
@@ -237,7 +285,14 @@
       renderBars('chartConsultant', Object.entries(byCon).sort((a,b)=>b[1]-a[1]), 'green');
       const filingEntries=Object.entries(byFiling).sort((a,b)=>b[1]-a[1]);
       const statusEntries=Object.entries(byStatus).sort((a,b)=>b[1]-a[1]);
-      renderBars('chartFiling', filingEntries.slice(0,5).concat(statusEntries.slice(0,3).map(([k,v])=>['ST: '+k,v])), 'blue');
+      renderBars('chartFiling', filingEntries.slice(0,8), 'blue');
+      // Normalize status labels for chart
+      const statusNorm = {};
+      records.forEach(r => {
+        const n = normalizeStatus(r.status) || '—';
+        statusNorm[n] = (statusNorm[n]||0)+1;
+      });
+      renderBars('chartStatus', Object.entries(statusNorm).sort((a,b)=>b[1]-a[1]), 'green');
     }
     function populateYearFilter() {
       const years=[...new Set(ALL_RECORDS.map(r=>String(r.year||'').trim()).filter(Boolean))].sort((a,b)=>b-a);
@@ -273,9 +328,9 @@
       if(total===0){ container.innerHTML='<div class="empty">No matching records</div>'; pag.style.display='none'; return; }
       const start=(currentPage-1)*PAGE_SIZE;
       const pageRecords=FILTERED_RECORDS.slice(start, start+PAGE_SIZE);
-      let html='<div class="table-container"><table><thead><tr><th>Img</th><th>Mark Text</th><th>Filing</th><th>Date</th><th>Mark Name</th><th>TM No</th><th>Class</th><th>Applicant</th><th>Trading As</th><th>Year</th><th>Consultant</th><th>Status</th></tr></thead><tbody>';
+      let html='<div class="table-container"><table><thead><tr><th>Logo</th><th>Name</th><th>Filing</th><th>Filing Date</th><th>Trademark Number</th><th>Class</th><th>Applicant</th><th>Trading As</th><th>Year</th><th>Consultant</th><th>Status</th><th>Edit</th></tr></thead><tbody>';
       pageRecords.forEach(r=>{
-        html+='<tr class="'+getStatusClass(r.status)+'"><td class="thumb-cell">'+thumbHtml(r.img)+'</td><td title="'+esc(r.noImg)+'">'+esc(r.noImg)+'</td><td><span class="filing-badge '+filingClass(r.filingProcess)+'">'+esc(r.filingProcess||'—')+'</span></td><td>'+esc(r.date)+'</td><td title="'+esc(r.folder)+'">'+esc(r.folder)+'</td><td>'+esc(r.tm)+'</td><td>'+esc(r.classNo)+'</td><td title="'+esc(r.appName)+'">'+esc(r.appName)+'</td><td title="'+esc(r.appTrade)+'">'+esc(r.appTrade)+'</td><td>'+esc(r.year)+'</td><td title="'+esc(r.conName)+'">'+esc(r.conName)+'</td><td>'+esc(r.status)+'</td></tr>';
+        html+='<tr class="'+getStatusClass(r.status)+'"><td class="thumb-cell">'+thumbHtml(r.img)+'</td><td title="'+esc(r.folder)+'">'+esc(r.folder)+'</td><td><span class="filing-badge '+filingClass(r.filingProcess)+'">'+esc(r.filingProcess||'—')+'</span></td><td>'+esc(formatFilingDate(r.date))+'</td><td>'+esc(r.tm)+'</td><td>'+esc(r.classNo)+'</td><td title="'+esc(r.appName)+'">'+esc(r.appName)+'</td><td title="'+esc(r.appTrade)+'">'+esc(r.appTrade)+'</td><td>'+esc(r.year)+'</td><td title="'+esc(r.conName)+'">'+esc(r.conName)+'</td><td><span class="status-tag '+statusTagClass(r.status)+'">'+esc(normalizeStatus(r.status)||'—')+'</span></td><td><a class="filing-badge" href="'+SHEET_URL+'" target="_blank" rel="noopener">Sheet</a></td></tr>';
       });
       html+='</tbody></table></div>';
       container.innerHTML=html;
@@ -299,6 +354,7 @@
           appTrade:r.appTrade||'', year:r.year||'', conName:r.conName||'', img:r.img||'', noImg:r.noImg||'',
           status:r.status||'', filingProcess:r.filingProcess||''
         }));
+        ALL_RECORDS=ALL_RECORDS.filter(r => (r.folder||r.tm||r.appName||r.status||'').toString().trim());
         ALL_RECORDS=sortByDateDesc(ALL_RECORDS);
         populateYearFilter(); applyFilters();
       } catch(err) {
