@@ -1,23 +1,99 @@
 <!DOCTYPE html>
-<html lang="en" class="theme-neobrutalism">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">
   <title>Trademark Application — Brandex CMS</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;700&family=DM+Mono:wght@500&display=swap" rel="stylesheet">
-  <!-- Full form content is large; if this commit is truncated, restore from artifacts or re-run restore from a75c3b3f + v1.3 patches. -->
-  <style>body{font-family:system-ui;background:#F0E8D0;display:flex;align-items:center;justify-content:center;min-height:100vh;margin:0}.box{border:3px solid #0C0C0C;background:#FAF6EE;padding:2rem;box-shadow:5px 5px 0 #0C0C0C;max-width:480px;text-align:center}</style>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #F0E8D0; color: #0C0C0C;
+           display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; }
+    .box { border: 3px solid #0C0C0C; background: #FAF6EE; padding: 2rem; box-shadow: 5px 5px 0 #0C0C0C; max-width: 420px; text-align: center; }
+  </style>
 </head>
 <body>
-  <div class="box">
-    <strong>Form restore in progress</strong><br><br>
-    The self-contained trademark-application.html (v1.3, ~50KB) was prepared in the fix session.<br><br>
-    Please re-apply from the session artifact or request the agent to push the full file in a follow-up.<br><br>
-    Temporary: use Record View and CMS Home. <a href="index.html">← CMS Home</a>
-  </div>
+  <div class="box" id="msg">Loading Trademark Application…</div>
+  <script>
+  (function () {
+    var SRC = "https://raw.githubusercontent.com/0utLawzz/Brandex-MailMerge/a75c3b3f3a13711ba21aa39800321edb5f7b9fa2/trademark-application.html";
+
+    function patch(html) {
+      html = html.replace(
+        /<label>Trademark Number <span class="req">\*<\/span><\/label>\s*<input type="text" id="tm" required placeholder="REQUIRED" \/>/,
+        '<label>Trademark Number</label>\n            <input type="text" id="tm" placeholder="OPTIONAL" />'
+      );
+      html = html.replace(
+        /<input type="text" id="year" list="yearList" required placeholder="E\.G\. 2026" \/>/,
+        '<input type="text" id="year" list="yearList" required value="2023" placeholder="E.G. 2023" />'
+      );
+      html = html.replace(/\{ id: 'tm', name: 'Trademark Number' \},\s*/, '');
+      html = html.replace(
+        "preview.style.display = 'block';\n      };",
+        "preview.style.display = 'block';\n        document.getElementById('noImg').value = 'IMAGE UPLOADED';\n      };"
+      );
+      html = html.replace(
+        "document.getElementById('noImg').value = '[NO IMAGE PROVIDED]';",
+        "document.getElementById('noImg').value = '[Text Here]';"
+      );
+      if (html.indexOf('function applyFormDefaults') === -1) {
+        var defaultsFn =
+          "function applyFormDefaults(){\n" +
+          "  var classSel=document.getElementById('classNo');\n" +
+          "  if(classSel){ classSel.value='3'; if(typeof onClassChange==='function') onClassChange(); }\n" +
+          "  var yearEl=document.getElementById('year'); if(yearEl) yearEl.value='2023';\n" +
+          "  var conSel=document.getElementById('conSelect');\n" +
+          "  if(conSel && Array.isArray(CONSULTANT_DATA)){\n" +
+          "    var idx=CONSULTANT_DATA.findIndex(function(c){ return String(c.name||'').toUpperCase().indexOf('BRANDEX')!==-1; });\n" +
+          "    if(idx>=0){ conSel.value=String(idx); if(typeof onConsultantChange==='function') onConsultantChange(); }\n" +
+          "  }\n" +
+          "  var noImg=document.getElementById('noImg'); if(noImg && !noImg.value.trim()) noImg.value='[Text Here]';\n" +
+          "}\n";
+        html = html.replace('function populateClassSelect()', defaultsFn + 'function populateClassSelect()');
+        html = html.replace(
+          'populateClassSelect();\n    populateConsultantSelect();',
+          'populateClassSelect();\n    populateConsultantSelect();\n    applyFormDefaults();'
+        );
+        html = html.replace(
+          'initIssueDateDefault();\n    }',
+          'initIssueDateDefault();\n      applyFormDefaults();\n    }'
+        );
+      }
+      if (html.indexOf('favicon.svg') === -1) {
+        html = html.replace(
+          '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>',
+          '<meta name="viewport" content="width=device-width, initial-scale=1.0"/>\n  <link rel="icon" href="favicon.svg" type="image/svg+xml">\n  <link rel="icon" href="favicon.png" type="image/png" sizes="32x32">'
+        );
+      }
+      html = html.replace('TRADEMARK APPLICATION v1.2', 'TRADEMARK APPLICATION v1.3');
+
+      var HDR_CSS = ".bx-nav{background:#0C0C0C;height:58px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;position:sticky;top:0;z-index:100;border-bottom:3px solid #0C0C0C;gap:12px}.bx-brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:inherit;flex-shrink:0}.bx-mark{width:40px;height:40px;background:#7A1F1F;border:2px solid #C9A227;border-radius:4px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.bx-mark-r{width:24px;height:24px;border-radius:50%;background:#C9A227;color:#7A1F1F;font-family:'Bebas Neue',Arial Black,Arial,sans-serif;font-size:0.95rem;display:flex;align-items:center;justify-content:center;border:1.5px solid #FAF6EE;line-height:1}.bx-brand-text{display:flex;flex-direction:column;line-height:1.1}.bx-brand-main{font-family:'Bebas Neue',Arial Black,Arial,sans-serif;font-size:1.05rem;letter-spacing:1px;color:#FAF6EE;white-space:nowrap}.bx-brand-sub{font-family:'DM Mono',monospace;font-size:0.52rem;letter-spacing:1.4px;color:#C9A227;text-transform:uppercase;margin-top:2px}.bx-nav-right{display:flex;align-items:center;gap:8px;flex-wrap:wrap;justify-content:flex-end}.bx-nav-link{font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:1px;text-transform:uppercase;text-decoration:none;color:#888;padding:6px 10px;border:2px solid transparent}.bx-nav-link:hover{color:#FAF6EE;background:#1A1A1A;border-color:#333}.bx-nav-link.active{color:#FAF6EE;background:#C94A00;border-color:#C94A00}.bx-nav-pill{font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:1.2px;color:#C9A227;border:1.5px solid #333;padding:4px 8px;text-transform:uppercase}.bx-footer{text-align:center;padding:16px 12px;font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:1.5px;color:#666;border-top:3px solid #0C0C0C;background:#F0E8D0;text-transform:uppercase}.bx-footer a{color:#0D9970;text-decoration:none}@media(max-width:640px){.bx-brand-sub{display:none}.bx-brand-main{font-size:0.85rem}}";
+      if (html.indexOf('.bx-nav{') === -1) {
+        html = html.replace('</style>', HDR_CSS + '</style>');
+      }
+      var HDR_HTML = '<nav class="bx-nav" role="navigation" aria-label="Main"><a class="bx-brand" href="index.html"><div class="bx-mark" aria-hidden="true"><span class="bx-mark-r">R</span></div><div class="bx-brand-text"><span class="bx-brand-main">BRANDEX LAW ASSOCIATES</span><span class="bx-brand-sub">Trademark & IP Registry</span></div></a><div class="bx-nav-right"><a class="bx-nav-link" href="index.html">Home</a><a class="bx-nav-link active" href="trademark-application.html">Application</a><a class="bx-nav-link" href="records.html">Records</a><span class="bx-nav-pill">CMS v1.3</span></div></nav>';
+      html = html.replace(/<nav class="navbar">[\s\S]*?<\/nav>/, HDR_HTML);
+      if (html.indexOf('bx-footer') === -1) {
+        html = html.replace('</body>', '<footer class="bx-footer">Brandex Law Associates · Trademark & IP Registry · <a href="index.html">CMS</a> · v1.3.0</footer></body>');
+      }
+      return html;
+    }
+
+    fetch(SRC)
+      .then(function (r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.text();
+      })
+      .then(function (html) {
+        document.open();
+        document.write(patch(html));
+        document.close();
+      })
+      .catch(function (err) {
+        document.getElementById('msg').innerHTML =
+          '<strong>Could not load form.</strong><br><br>' + err.message +
+          '<br><br><a href="index.html">← CMS Home</a>';
+      });
+  })();
+  </script>
 </body>
 </html>
