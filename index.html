@@ -3,9 +3,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="icon" href="assets/brandex-favicon-20261003.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/brandex-favicon-20261003.png">
+  <link rel="icon" type="image/png" href="assets/brandex-favicon-20261003.png">
+  <link rel="apple-touch-icon" href="assets/brandex-logo-12.png">
+  <meta property="og:image" content="assets/brandex-social-preview-20261003.png">
+  <meta name="theme-color" content="#C94A00">
   <title>Brandex Law Associates CMS</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -14,7 +15,7 @@
     :root {
       --bg: #F0E8D0; --bg-alt: #E8DFC7; --bg2: #0C0C0C; --panel: #FAF6EE;
       --black: #0C0C0C; --accent: #C94A00; --accent2: #0D9970; --accent3: #D4A800;
-      --maroon: #7A1F1F; --shadow: 5px 5px 0 #0C0C0C; --shadow-sm: 3px 3px 0 #0C0C0C; --radius: 6px;
+      --shadow: 5px 5px 0 #0C0C0C; --shadow-sm: 3px 3px 0 #0C0C0C; --radius: 6px;
     }
     * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
@@ -22,55 +23,22 @@
       background: var(--bg); color: var(--black);
       min-height: 100vh; line-height: 1.5; text-transform: uppercase;
     }
-    .bx-nav {
-      background: #0C0C0C; height: 58px; display: flex; align-items: center;
-      justify-content: space-between; padding: 0 16px; position: sticky; top: 0;
-      z-index: 100; border-bottom: 3px solid #0C0C0C; gap: 12px;
-    }
-    .bx-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit; flex-shrink: 0; }
-    .bx-mark {
-      width: 40px; height: 40px; background: #6C1C1F; border: 2px solid #B0740E;
-      border-radius: 4px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-    }
-    .bx-mark-r {
-      width: 24px; height: 24px; border-radius: 50%; background: #B0740E; color: #6C1C1F;
-      font-family: 'Bebas Neue', 'Arial Black', Arial, sans-serif; font-size: 0.95rem;
-      display: flex; align-items: center; justify-content: center; border: 1.5px solid #FAF6EE; line-height: 1;
-    }
-    .bx-brand-text { display: flex; flex-direction: column; line-height: 1.1; }
-    .bx-brand-main {
-      font-family: 'Bebas Neue', 'Arial Black', Arial, sans-serif;
-      font-size: 1.05rem; letter-spacing: 1px; color: #FAF6EE; white-space: nowrap;
-    }
-    .bx-brand-sub {
-      font-family: 'DM Mono', monospace; font-size: 0.52rem; letter-spacing: 1.4px;
-      color: #D6A64B; text-transform: uppercase; margin-top: 2px;
-    }
-    .bx-nav-right { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
-    .bx-nav-link {
-      font-family: 'DM Mono', monospace; font-size: 0.62rem; letter-spacing: 1px;
-      text-transform: uppercase; text-decoration: none; color: #888; padding: 6px 10px; border: 2px solid transparent;
-    }
-    .bx-nav-link:hover { color: #FAF6EE; background: #1A1A1A; border-color: #333; }
-    .bx-nav-link.active { color: #FAF6EE; background: #6C1C1F; border-color: #B0740E; }
-    .bx-nav-pill {
-      font-family: 'DM Mono', monospace; font-size: 0.58rem; letter-spacing: 1.2px;
-      color: #D6A64B; border: 1.5px solid #333; padding: 4px 8px; text-transform: uppercase;
-    }
-    .bx-footer {
-      text-align: center; padding: 16px 12px; font-family: 'DM Mono', monospace;
-      font-size: 0.62rem; letter-spacing: 1.5px; color: #666; border-top: 3px solid #0C0C0C;
-      background: #F0E8D0; text-transform: uppercase;
-    }
-    .bx-footer a { color: #0D9970; text-decoration: none; }
-    .bx-footer a:hover { color: #C94A00; }
-    @media (max-width: 640px) {
-      .bx-brand-main { font-size: 0.85rem; }
-      .bx-brand-sub { display: none; }
-      .bx-nav-link { padding: 5px 7px; font-size: 0.55rem; }
-    }
+    .navbar{position:sticky;top:0;z-index:1000;height:60px;background:#0C0C0C;border-bottom:3px solid #C94A00;box-shadow:0 5px 0 rgba(0,0,0,.2);display:flex;align-items:center;justify-content:space-between;padding:0 20px;gap:12px;}
+    .nb-brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;flex-shrink:0;}
+    .nb-logo{width:40px;height:40px;border-radius:50%;object-fit:cover;border:2px solid #C94A00;background:#FAF6EE;}
+    .nb-brand-text{font-family:'Bebas Neue',sans-serif;font-size:22px;letter-spacing:2px;color:#FAF6EE;line-height:1.1;}
+    .nb-brand-sub{font-family:'DM Mono',monospace;font-size:9px;color:#0D9970;letter-spacing:2px;text-transform:uppercase;margin-top:1px;}
+    .nb-nav{display:flex;align-items:center;gap:0;flex:1;justify-content:center;}
+    .ni{display:flex;align-items:center;padding:0 16px;height:60px;color:rgba(250,246,238,.55);font-family:'DM Mono',monospace;font-size:11px;font-weight:500;letter-spacing:1px;text-transform:uppercase;text-decoration:none;border-bottom:4px solid transparent;}
+    .ni:hover{color:#FAF6EE;background:#1A1A1A;}
+    .ni.active{color:#FAF6EE;border-bottom-color:#C94A00;}
+    .nb-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+    .nb-pill{font-family:'DM Mono',monospace;font-size:10px;letter-spacing:1px;color:#C94A00;border:1.5px solid #333;padding:4px 8px;text-transform:uppercase;}
+    .bx-footer{text-align:center;padding:14px 12px;font-family:'DM Mono',monospace;font-size:0.58rem;letter-spacing:1px;color:#FFF9F0;border-top:none;background:#0C0C0C;text-transform:uppercase;}
+    .bx-footer .accent{color:#C94A00;}
+    @media(max-width:720px){.nb-brand-sub{display:none}.nb-brand-text{font-size:18px}.ni{padding:0 10px;font-size:10px}}
     #welcome {
-      min-height: calc(100vh - 58px); display: flex; flex-direction: column;
+      min-height: calc(100vh - 60px); display: flex; flex-direction: column;
       align-items: center; justify-content: center; padding: 36px 16px 50px;
     }
     .welcome-stamp {
@@ -140,29 +108,30 @@
     .tag-live { background: #C94A00; color: #fff; }
     .tag-deploy { background: #0D9970; color: #fff; }
     .tag-sheet { background: #D4A800; color: #0C0C0C; }
-    .tag-tool { background: #7A1F1F; color: #fff; }
+    .tag-tool { background: #0C0C0C; color: #fff; }
     .tag-soon { background: #888; color: #fff; }
     .tag-link { text-decoration: none; cursor: pointer; }
     .menu-card { cursor: default; }
     .menu-btn.placeholder { opacity: 0.55; cursor: not-allowed; }
     .menu-btn.placeholder:hover { transform: none; box-shadow: var(--shadow); }
   </style>
-<meta name="theme-color" content="#C94A00">
 </head>
 <body>
-  <nav class="bx-nav" role="navigation" aria-label="Main">
-    <a class="bx-brand" href="index.html">
-      <div class="bx-mark" aria-hidden="true"><span class="bx-mark-r">R</span></div>
-      <div class="bx-brand-text">
-        <span class="bx-brand-main">BRANDEX LAW ASSOCIATES</span>
-        <span class="bx-brand-sub">Trademark & IP Registry</span>
+  <nav class="navbar" role="navigation" aria-label="Main">
+    <a class="nb-brand" href="index.html">
+      <img src="assets/brandex-logo-15.png" alt="Brandex" class="nb-logo" width="40" height="40">
+      <div>
+        <div class="nb-brand-text">BRANDEX</div>
+        <div class="nb-brand-sub">Trademark Application · CMS</div>
       </div>
     </a>
-    <div class="bx-nav-right">
-      <a class="bx-nav-link active" href="index.html">Home</a>
-      <a class="bx-nav-link" href="trademark-application.html">Application</a>
-      <a class="bx-nav-link" href="records.html">Records</a>
-      <span class="bx-nav-pill">CMS v1.3</span>
+    <div class="nb-nav">
+      <a class="ni active" href="index.html">Home</a>
+      <a class="ni" href="trademark-application.html">Application</a>
+      <a class="ni" href="records.html">Records</a>
+    </div>
+    <div class="nb-right">
+      <span class="nb-pill">CMS v1.3</span>
     </div>
   </nav>
 
@@ -237,7 +206,7 @@
     </div>
   </div>
 
-  <footer class="bx-footer" style="background:#6C1C1F;color:#FFF9F0;border-top:none;letter-spacing:1px;">BRANDEX LAW ASSOCIATES · WWW.BRANDEX.PK · INFO@BRANDEX.PK · +92 336 0015009 · ISLAMABAD · KARACHI · LAHORE · MULTAN · RAWALPINDI</footer>
+  <footer class="bx-footer">BRANDEX LAW ASSOCIATES · <span class="accent">WWW.BRANDEX.PK</span> · INFO@BRANDEX.PK · +92 336 0015009 · ISLAMABAD · KARACHI · LAHORE · MULTAN · RAWALPINDI</footer>
 
   <script>
     function playClick(el) {
